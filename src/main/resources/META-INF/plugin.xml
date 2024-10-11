@@ -1,0 +1,45 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.eliasyoussef47.php.SuppressedAttributes</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Suppressed Attributes</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="eliasyoussef47@gmail.com" url="">EliasYoussef47</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    This plugin makes it possible to suppress the "Unused declaration" inspection on methods or fields that have a specific attributes that the user can choose.<br>
+     The user can specify a list of the attributes considered.<br>
+     <br>
+     The user specifies an attribute by supplying its fully qualified name (FQN). The supplied FQN Should start with a backslash (\).<br>
+     Example: \Fully\Qualified\Name\SuppressingAttribute<br>
+     <br>
+     The user might need to reopen the files that should be affected if no result is immediately visible.
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.jetbrains.php</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <lang.inspectionSuppressor language="PHP" implementationClass="com.eliasyoussef47.php.suppressedattributes.AttributeSuppressor"/>
+        <!--suppress LightServiceMigrationXML -->
+        <projectService
+                serviceImplementation="com.eliasyoussef47.php.suppressedattributes.SuppressedAttributesSettings"/>
+        <projectConfigurable
+                parentId="tools"
+                instance="com.eliasyoussef47.php.suppressedattributes.SuppressedAttributesSettingsConfigurable"
+                id="com.example.demo.AppSettingsConfigurable"
+                displayName="Attribute Suppressor"
+                nonDefaultProject="true"/>
+    </extensions>
+</idea-plugin>
