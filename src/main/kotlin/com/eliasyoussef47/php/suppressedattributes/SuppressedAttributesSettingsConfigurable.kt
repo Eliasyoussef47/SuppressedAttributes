@@ -1,6 +1,5 @@
 package com.eliasyoussef47.php.suppressedattributes
 
-import ai.grazie.utils.toLinkedSet
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import org.jetbrains.annotations.Nls
