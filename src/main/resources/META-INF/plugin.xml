@@ -32,6 +32,7 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <!--suppress PluginXmlValidity -->
         <lang.inspectionSuppressor language="PHP" implementationClass="com.eliasyoussef47.php.suppressedattributes.AttributeSuppressor"/>
         <!--suppress LightServiceMigrationXML -->
         <projectService
