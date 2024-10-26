@@ -16,6 +16,7 @@
     <description><![CDATA[
     This plugin makes it possible to suppress the "Unused declaration" inspection on methods or fields that have a specific attributes that the user can choose.<br>
      The user can specify a list of the attributes considered.<br>
+     This is similar to the "Suppressed annotations" feature in PhpStorm, but for attributes.<br>
      <br>
      The user specifies an attribute by supplying its fully qualified name (FQN). The supplied FQN Should start with a backslash (\).<br>
      Example: \Fully\Qualified\Name\SuppressingAttribute<br>

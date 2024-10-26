@@ -20,6 +20,7 @@ dependencies {
 		phpstorm("2024.2.3")
 		bundledPlugin("com.jetbrains.php")
 		instrumentationTools()
+		zipSigner()
 	}
 }
 
@@ -39,8 +40,8 @@ tasks {
 	}
 
 	signPlugin {
-		certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-		privateKey.set(System.getenv("PRIVATE_KEY"))
+		certificateChainFile.set(file(System.getenv("CERTIFICATE_CHAIN_FILE")))
+		privateKeyFile.set(file(System.getenv("PRIVATE_KEY_FILE")))
 		password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
 	}
 
