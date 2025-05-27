@@ -6,6 +6,7 @@ import com.intellij.psi.PsiElement
 import com.jetbrains.php.lang.psi.elements.Field
 import com.jetbrains.php.lang.psi.elements.Method
 import com.jetbrains.php.lang.psi.elements.PhpAttributesOwner
+import com.jetbrains.php.lang.psi.elements.PhpClass
 
 class AttributeSuppressor : InspectionSuppressor {
 	override fun isSuppressedFor(element: PsiElement, toolId: String): Boolean {
@@ -17,13 +18,22 @@ class AttributeSuppressor : InspectionSuppressor {
 		}
 
 		// Suppress inspection if the method has the Factory attribute
-		if (element is PhpAttributesOwner && (element is Method || element is Field)) {
+		if (element is PhpAttributesOwner && (isElementValid(element))) {
 			if (hasFactoryAnnotation(element, appSettings)) {
 				return true
 			}
 		}
 
 		return false
+	}
+
+	private fun isElementValid(element: PhpAttributesOwner): Boolean {
+		return element is Method ||
+				element is Field ||
+				element is PhpClass ||
+				element is com.jetbrains.php.lang.psi.elements.Constant ||
+				element is com.jetbrains.php.lang.psi.elements.Parameter ||
+				element is com.jetbrains.php.lang.psi.elements.PhpClassMember
 	}
 
 	private fun hasFactoryAnnotation(element: PhpAttributesOwner, appSettings: SuppressedAttributesSettings): Boolean {

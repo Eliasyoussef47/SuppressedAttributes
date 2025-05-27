@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.eliasyoussef47.php.suppressedattributes"
-version = "0.1.4-beta"
+version = "0.2.0-beta"
 
 repositories {
 	mavenCentral()
