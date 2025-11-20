@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.eliasyoussef47.php.suppressedattributes"
-version = "0.2.0-beta"
+version = "0.2.1-beta"
 
 repositories {
 	mavenCentral()
@@ -36,7 +36,7 @@ tasks {
 
 	patchPluginXml {
 		sinceBuild.set("232")
-//		untilBuild.set("251.*")
+		untilBuild.set(provider { null })
 	}
 
 	signPlugin {
